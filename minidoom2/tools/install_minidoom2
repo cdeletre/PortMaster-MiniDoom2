@@ -81,7 +81,7 @@ unpack_game(){
 
   unzip -o "$GAMEDIR/$PACKAGE_ZIP"
   if [ ! $? -eq 0 ];then
-    echo "Error while unpacking miniDoom2 v3-1.zip"
+    echo "Error while unpacking miniDoom2 v3-1.zip" -d "$GAMEDIR/$PACKAGE_DIR"
     exit 1
   fi
   
