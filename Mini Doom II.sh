@@ -43,11 +43,11 @@ swapabxy() {
 
     if [ "$CFW_NAME" == "knulli" ] && [ -f "$SDL_GAMECONTROLLERCONFIG_FILE" ];then
       # Knulli seems to use SDL_GAMECONTROLLERCONFIG_FILE (on rg40xxh at least)
-      cat "$SDL_GAMECONTROLLERCONFIG_FILE" | swapabxy.py > "$GAMEDIR/gamecontrollerdb_swapped.txt"
+      SDL_swap_gpbuttons.py -i "$SDL_GAMECONTROLLERCONFIG_FILE" -o "$GAMEDIR/gamecontrollerdb_swapped.txt" $(<SDL_swap_gpbuttons.txt)
       export SDL_GAMECONTROLLERCONFIG_FILE="$GAMEDIR/gamecontrollerdb_swapped.txt"
     else
       # Other CFW use SDL_GAMECONTROLLERCONFIG
-      export SDL_GAMECONTROLLERCONFIG="`echo "$SDL_GAMECONTROLLERCONFIG" | swapabxy.py`"
+      export SDL_GAMECONTROLLERCONFIG="`echo "$SDL_GAMECONTROLLERCONFIG" | SDL_swap_gpbuttons.py $(<SDL_swap_gpbuttons.txt)`"
     fi
 }
 # Functions END
@@ -67,7 +67,7 @@ fi
 [ "$CFW_NAME" == "muOS" ] && splash "splash.png" 1 # workaround for muOS
 splash "splash.png" 5000 & # 5 seconds
 
-if [ -f "$GAMEDIR/swapabxy.txt" ]; then
+if [ -f "$GAMEDIR/SDL_swap_gpbuttons.txt" ]; then
     swapabxy
 fi
 

@@ -40,16 +40,10 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$GAMEDIR/tools/libs.${DEVICE_ARCH}"
 check_banks(){
 
   # Check that the required sound banks are present
-  required_banks=(
-      "Ambs.bnk"
-      "Events.bnk"
-      "Init.bnk"
-      "Music.bnk"
-      "SFX.bnk"
-  )
+  required_banks="Ambs.bnk Events.bnk Init.bnk Music.bnk SFX.bnk"
 
   # Check that the required sound banks are present
-  for bank in "${required_banks[@]}"; do
+  for bank in $required_banks; do
     if [ ! -f "$GAMEDIR/$PACKAGE_DIR/sound/banks/Windows/$bank" ]; then
       echo "$GAMEDIR/$PACKAGE_DIR/sound/banks/Windows/$bank not found"
       exit 1
