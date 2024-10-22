@@ -33,6 +33,7 @@ export PATCHER_TIME="2 to 5 minutes"
 exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
 $ESUDO chmod +x "$GAMEDIR/gmloadernext"
+$ESUDO chmod +x "$GAMEDIR/tools/swapabxy.py"
 
 cd $GAMEDIR
 
@@ -41,12 +42,12 @@ swapabxy() {
     # Update SDL_GAMECONTROLLERCONFIG to swap a/b and x/y button
 
     if [ "$CFW_NAME" == "knulli" ] && [ -f "$SDL_GAMECONTROLLERCONFIG_FILE" ];then
-	      # Knulli seems to use SDL_GAMECONTROLLERCONFIG_FILE (on rg40xxh at least)
-        cat "$SDL_GAMECONTROLLERCONFIG_FILE" | swapabxy.py > "$GAMEDIR/gamecontrollerdb_swapped.txt"
-	      export SDL_GAMECONTROLLERCONFIG_FILE="$GAMEDIR/gamecontrollerdb_swapped.txt"
+      # Knulli seems to use SDL_GAMECONTROLLERCONFIG_FILE (on rg40xxh at least)
+      cat "$SDL_GAMECONTROLLERCONFIG_FILE" | swapabxy.py > "$GAMEDIR/gamecontrollerdb_swapped.txt"
+      export SDL_GAMECONTROLLERCONFIG_FILE="$GAMEDIR/gamecontrollerdb_swapped.txt"
     else
-        # Other CFW use SDL_GAMECONTROLLERCONFIG
-        export SDL_GAMECONTROLLERCONFIG="`echo "$SDL_GAMECONTROLLERCONFIG" | swapabxy.py`"
+      # Other CFW use SDL_GAMECONTROLLERCONFIG
+      export SDL_GAMECONTROLLERCONFIG="`echo "$SDL_GAMECONTROLLERCONFIG" | swapabxy.py`"
     fi
 }
 # Functions END
@@ -61,10 +62,6 @@ if [ ! -f patchlog.txt ]; then
     fi
 else
     echo "Patching process already completed. Skipping."
-fi
-
-if [ -f swapabxy.txt ]; then
-    swapabxy
 fi
 
 [ "$CFW_NAME" == "muOS" ] && splash "splash.png" 1 # workaround for muOS

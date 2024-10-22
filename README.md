@@ -9,23 +9,33 @@ The music is not yet supported in the port, an update will come later when we'll
 | Button | Action |
 |--|--| 
 |Dpad / Left Stick|Movement|
+|A|Roll|
 |B|Jump|
-|Y|Shot|
 |X|Throw grenade|
+|Y|Shot|
 |L1|Roll left|
 |R1|Roll right|
 |L2|Weapon menu|
 |R2|Weapon menu|
 |Option / Start|Menu|
 
+Nintendo gamepad layout:
+* B is South
+* X is North
+* Y is East
+* A is West
+
+You disable the swaping of A/B and X/Y by renaming the `swapabxy.txt` file (eg.`NO_swapabxy.txt`).
+
 ## Acknowledgments
 
-I cannot forget to thank warmly our fellow testers from the PortMaster Discord <3
+I cannot forget to thank warmly our fellow testers from the PortMaster Discord server <3
 
 And finaly a big thanks to:
 * JohnnyOnFlame for making GMLoaderNext
 * nate for the custom loading splash engine
 * Jeod for the [EmulationStation-ImageMaker](https://github.com/JeodC/EmulationStation-ImageMaker)
+* [JanTrueno](https://github.com/JanTrueno) for the magnificent Patcher tool
 
 ## Build
 

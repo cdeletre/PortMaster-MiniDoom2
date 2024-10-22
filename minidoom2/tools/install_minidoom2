@@ -6,6 +6,8 @@
 #   Version: 1.0
 #
 
+XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
+
 if [ -d "/opt/system/Tools/PortMaster/" ]; then
   controlfolder="/opt/system/Tools/PortMaster"
 elif [ -d "/opt/tools/PortMaster/" ]; then
@@ -30,7 +32,7 @@ export PACKAGE_ZIP="miniDoom2 v3-1.zip"
 export PACKAGE_DIR="miniDoom2 v3-1"
 
 export PATH="$PATH:$GAMEDIR/tools:$controlfolder"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$GAMEDIR/tools/libs"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$GAMEDIR/tools/libs.${DEVICE_ARCH}"
 
 
 # ----------------- BEGIN FUNCTIONS -----------------
